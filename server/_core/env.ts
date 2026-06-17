@@ -3,7 +3,7 @@ console.log("[ENV] Loading environment configuration...");
 // Use getters instead of frozen object to ensure we read process.env at runtime
 export const ENV = {
   get appId() {
-    const value = process.env.VITE_APP_ID ?? "";
+    const value = process.env.VITE_APP_ID ?? "pare-e-lave-app-HARDCODED-TEST";
     console.log("[ENV] Getter: appId =", value);
     return value;
   },
