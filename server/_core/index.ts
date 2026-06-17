@@ -55,6 +55,18 @@ async function startServer() {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
+  // Debug endpoint
+  app.get("/api/debug/env", (_, res) => {
+    res.json({
+      VITE_APP_ID: process.env.VITE_APP_ID,
+      JWT_SECRET: process.env.JWT_SECRET ? "***" : "(empty)",
+      DATABASE_URL: process.env.DATABASE_URL ? "***" : "(empty)",
+      NODE_ENV: process.env.NODE_ENV,
+      FRONTEND_URL: process.env.FRONTEND_URL,
+      ENV_appId: ENV.appId,
+    });
+  });
+
   const port = parseInt(process.env.PORT || "3000");
 
   server.listen(port, "0.0.0.0", () => {
