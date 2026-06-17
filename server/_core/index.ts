@@ -6,6 +6,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { registerAuthRoutes } from "../auth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
+import { ENV } from "./env";
 
 async function startServer() {
   const app = express();
