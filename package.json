@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch server/_core/index.ts",
-    "build": "esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "node build.js",
     "start": "node dist/index.js",
     "db:push": "drizzle-kit generate && drizzle-kit migrate"
   },
