@@ -168,6 +168,7 @@ class SDKServer {
     openId: string,
     options: { expiresInMs?: number; name?: string } = {}
   ): Promise<string> {
+    console.log("[SDK] createSessionToken called - openId:", openId, "ENV.appId:", ENV.appId);
     return this.signSession(
       {
         openId,
