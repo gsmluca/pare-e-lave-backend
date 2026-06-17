@@ -1,14 +1,41 @@
-console.log("[ENV] VITE_APP_ID from process.env:", process.env.VITE_APP_ID);
+console.log("[ENV] Loading environment configuration...");
 
+// Use getters instead of frozen object to ensure we read process.env at runtime
 export const ENV = {
-  appId: process.env.VITE_APP_ID ?? "",
-  cookieSecret: process.env.JWT_SECRET ?? "",
-  databaseUrl: process.env.DATABASE_URL ?? "",
-  oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
-  ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
-  isProduction: process.env.NODE_ENV === "production",
-  forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
-  forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  get appId() {
+    const value = process.env.VITE_APP_ID ?? "";
+    console.log("[ENV] Getter: appId =", value);
+    return value;
+  },
+  get cookieSecret() {
+    return process.env.JWT_SECRET ?? "";
+  },
+  get databaseUrl() {
+    return process.env.DATABASE_URL ?? "";
+  },
+  get oAuthServerUrl() {
+    return process.env.OAUTH_SERVER_URL ?? "";
+  },
+  get ownerOpenId() {
+    return process.env.OWNER_OPEN_ID ?? "";
+  },
+  get isProduction() {
+    return process.env.NODE_ENV === "production";
+  },
+  get forgeApiUrl() {
+    return process.env.BUILT_IN_FORGE_API_URL ?? "";
+  },
+  get forgeApiKey() {
+    return process.env.BUILT_IN_FORGE_API_KEY ?? "";
+  },
 };
 
-console.log("[ENV] ENV object loaded:", ENV);
+console.log("[ENV] Environment configuration loaded");
+console.log("[ENV] Current values:", {
+  appId: ENV.appId,
+  cookieSecret: ENV.cookieSecret ? "***" : "(empty)",
+  databaseUrl: ENV.databaseUrl ? "***" : "(empty)",
+  oAuthServerUrl: ENV.oAuthServerUrl,
+  ownerOpenId: ENV.ownerOpenId,
+  isProduction: ENV.isProduction,
+});
