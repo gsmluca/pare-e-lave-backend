@@ -3,9 +3,7 @@ console.log("[ENV] Loading environment configuration...");
 // Use getters instead of frozen object to ensure we read process.env at runtime
 export const ENV = {
   get appId() {
-    // TEMPORARY: Hardcoded because process.env.VITE_APP_ID is empty in Railway
-    // TODO: Fix environment variable passing in Railway
-    const value = process.env.VITE_APP_ID ?? "pare-e-lave-app";
+    const value = process.env.VITE_APP_ID ?? "pare-e-lave-app-HARDCODED";
     console.log("[ENV] Getter: appId =", value);
     return value;
   },
