@@ -30,12 +30,4 @@ export const ENV = {
   },
 };
 
-console.log("[ENV] Environment configuration loaded");
-console.log("[ENV] Current values:", {
-  appId: ENV.appId,
-  cookieSecret: ENV.cookieSecret ? "***" : "(empty)",
-  databaseUrl: ENV.databaseUrl ? "***" : "(empty)",
-  oAuthServerUrl: ENV.oAuthServerUrl,
-  ownerOpenId: ENV.ownerOpenId,
-  isProduction: ENV.isProduction,
-});
+console.log("[ENV] Environment configuration loaded - getters are ready");
