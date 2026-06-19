@@ -41,6 +41,7 @@ export const appRouter = router({
           description: z.string().optional(),
           value: z.string().refine((val) => !isNaN(parseFloat(val)), "Invalid number"),
           paymentMethod: z.enum(["pix", "cash", "card", "other"]),
+          createdAt: z.string().optional(),
         })
       )
       .mutation(async ({ ctx, input }) => {
@@ -51,6 +52,7 @@ export const appRouter = router({
           description: input.description || null,
           value: input.value,
           paymentMethod: input.paymentMethod,
+          createdAt: input.createdAt ? new Date(input.createdAt) : undefined,
         };
         await createService(service);
         return { success: true };
@@ -143,6 +145,7 @@ export const appRouter = router({
           category: z.string(),
           description: z.string().optional(),
           amount: z.string().refine((val) => !isNaN(parseFloat(val)), "Invalid number"),
+          createdAt: z.string().optional(),
         })
       )
       .mutation(async ({ ctx, input }) => {
@@ -151,6 +154,7 @@ export const appRouter = router({
           category: input.category,
           description: input.description || null,
           amount: input.amount,
+          createdAt: input.createdAt ? new Date(input.createdAt) : undefined,
         };
         await createExpense(expense);
         return { success: true };
